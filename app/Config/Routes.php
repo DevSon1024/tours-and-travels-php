@@ -5,7 +5,8 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'UserController::login');
+// Set the landing page as the default route
+$routes->get('/', 'HomeController::index');
 
 // Authentication Routes
 $routes->get('login', 'UserController::login');
@@ -23,6 +24,9 @@ $routes->get('profile/edit', 'ProfileController::edit', ['filter' => 'auth']);
 $routes->post('profile/update', 'ProfileController::update', ['filter' => 'auth']);
 $routes->get('profile/delete', 'ProfileController::delete', ['filter' => 'auth']);
 
+// Package Details Page
+$routes->get('package/(:num)', 'HomeController::packageDetails/$1');
+
 // Admin Routes
 $routes->group('admin', ['filter' => ['auth', 'admin']], function($routes) {
     $routes->get('dashboard', 'AdminController::index');
@@ -34,4 +38,8 @@ $routes->group('admin', ['filter' => ['auth', 'admin']], function($routes) {
     $routes->get('packages/edit/(:num)', 'AdminController::editPackage/$1');
     $routes->post('packages/update/(:num)', 'AdminController::updatePackage/$1');
     $routes->get('packages/delete/(:num)', 'AdminController::deletePackage/$1');
+
+    // Settings
+    $routes->get('settings', 'AdminController::settings');
+    $routes->post('settings/update', 'AdminController::updateSettings');
 });
