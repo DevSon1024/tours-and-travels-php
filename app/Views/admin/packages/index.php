@@ -11,6 +11,7 @@
             <th>ID</th>
             <th>Title</th>
             <th>Price</th>
+            <th>Status</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -19,7 +20,12 @@
         <tr>
             <td><?= $package['id'] ?></td>
             <td><?= esc($package['title']) ?></td>
-            <td>₹<?= esc($package['price']) ?></td>
+            <td>₹<?= esc($package['price_per_person']) ?></td>
+            <td>
+                <span class="badge bg-<?= $package['status'] == 'Active' ? 'success' : 'secondary' ?>">
+                    <?= esc($package['status']) ?>
+                </span>
+            </td>
             <td>
                 <a href="/admin/packages/edit/<?= $package['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
                 <a href="/admin/packages/delete/<?= $package['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this package?');">Delete</a>

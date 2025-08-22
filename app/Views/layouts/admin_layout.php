@@ -18,6 +18,7 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="/admin/dashboard">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/packages">Manage Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/bookings">Bookings</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/settings">Settings</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -37,6 +38,7 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <?= $this->renderSection('scripts') ?>
     
 </body>
 </html>

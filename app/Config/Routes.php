@@ -27,6 +27,12 @@ $routes->get('profile/delete', 'ProfileController::delete', ['filter' => 'auth']
 // Package Details Page
 $routes->get('package/(:num)', 'HomeController::packageDetails/$1');
 
+// Booking Process
+$routes->get('booking/book/(:num)', 'BookingController::book/$1', ['filter' => 'auth']);
+$routes->post('booking/process', 'BookingController::processBooking', ['filter' => 'auth']);
+$routes->get('booking/payment/(:num)', 'BookingController::payment/$1', ['filter' => 'auth']);
+$routes->get('booking/receipt/(:num)', 'BookingController::receipt/$1', ['filter' => 'auth']);
+
 // Admin Routes
 $routes->group('admin', ['filter' => ['auth', 'admin']], function($routes) {
     $routes->get('dashboard', 'AdminController::index');
@@ -38,6 +44,8 @@ $routes->group('admin', ['filter' => ['auth', 'admin']], function($routes) {
     $routes->get('packages/edit/(:num)', 'AdminController::editPackage/$1');
     $routes->post('packages/update/(:num)', 'AdminController::updatePackage/$1');
     $routes->get('packages/delete/(:num)', 'AdminController::deletePackage/$1');
+    $routes->get('bookings', 'AdminController::bookings');
+    $routes->get('bookings/details/(:num)', 'AdminController::bookingDetails/$1');
 
     // Settings
     $routes->get('settings', 'AdminController::settings');

@@ -1,70 +1,42 @@
-/* General Body Styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
-}
-
-/* Navbar Styling */
-.navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,.1);
-}
-
-/* Hero Section on Landing Page */
+/* Enhanced Hero Section */
 .hero-section {
-    background: url('https://placehold.co/1920x1080/EBF4FF/333333?text=Explore+the+World') no-repeat center center;
-    background-size: cover;
-    color: white;
-    padding: 6rem 0;
-    text-align: center;
-    margin-bottom: 2rem;
+    position: relative;
+    padding: 8rem 0;
+}
+.hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+.hero-section .container {
+    position: relative;
+    z-index: 2;
 }
 
-.hero-section h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+/* Animations for Landing Page */
+.animate-fade-in-down {
+    animation: fadeInDown 1s ease-in-out;
+}
+.animate-fade-in-up {
+    animation: fadeInUp 1s ease-in-out;
 }
 
-.hero-section p {
-    font-size: 1.25rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Card Styling */
-.card {
-    border: none;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,.1);
-    transition: transform .2s, box-shadow .2s;
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0,0,0,.15);
-}
-
-.card-title {
-    color: #0056b3;
-}
-
-/* Button Styling */
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    transition: background-color .2s;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-
-/* Mobile-First Adjustments */
-@media (max-width: 991.98px) {
-    .navbar-nav {
-        text-align: center;
-    }
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
+/* Package Card Styling */
+.package-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
 }

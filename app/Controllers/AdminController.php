@@ -3,6 +3,7 @@
 use App\Models\PackageModel;
 use App\Models\UserModel;
 use App\Models\SettingModel;
+use App\Models\BookingModel;
 
 class AdminController extends BaseController
 {
@@ -10,14 +11,52 @@ class AdminController extends BaseController
     {
         $packageModel = new PackageModel();
         $userModel = new UserModel();
+        $bookingModel = new BookingModel();
 
         $data = [
             'total_packages' => $packageModel->countAllResults(),
             'total_customers' => $userModel->where('role', 'customer')->countAllResults(),
-            'total_bookings'  => 0 // We will implement this later
+            'total_bookings'  => $bookingModel->countAllResults(),
+            'new_bookings_count' => $bookingModel->getNewBookingsCount() // Add this for the notification
         ];
 
         return view('admin/dashboard', $data);
+    }
+
+   public function bookings()
+    {
+        $bookingModel = new BookingModel();
+        $packageModel = new PackageModel();
+
+        // Get filter and sort data from URL
+        $filters = [
+            'start_date' => $this->request->getGet('filter_start_date'), // Updated
+            'end_date'   => $this->request->getGet('filter_end_date'),   // Updated
+            'package_id' => $this->request->getGet('filter_package'),
+            'destination' => $this->request->getGet('filter_destination')
+        ];
+        $sorting = [
+            'sortBy' => $this->request->getGet('sort_by'),
+            'sortOrder' => $this->request->getGet('sort_order')
+        ];
+
+        $data['bookings'] = $bookingModel->getAllBookings($filters, $sorting);
+        $data['packages'] = $packageModel->findAll();
+        $data['filters'] = $filters;
+        $data['sorting'] = $sorting;
+
+        return view('admin/bookings/index', $data);
+    }
+
+    public function bookingDetails($id)
+    {
+        $bookingModel = new BookingModel();
+        $data['booking'] = $bookingModel
+            ->select('bookings.*, users.name as user_name, users.email as user_email, packages.title as package_title')
+            ->join('users', 'users.id = bookings.user_id')
+            ->join('packages', 'packages.id = bookings.package_id')
+            ->find($id);
+        return view('admin/bookings/details', $data);
     }
 
     // --- Package Management ---
