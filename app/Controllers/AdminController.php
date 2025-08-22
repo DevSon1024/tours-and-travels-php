@@ -17,7 +17,8 @@ class AdminController extends BaseController
             'total_packages' => $packageModel->countAllResults(),
             'total_customers' => $userModel->where('role', 'customer')->countAllResults(),
             'total_bookings'  => $bookingModel->countAllResults(),
-            'new_bookings_count' => $bookingModel->getNewBookingsCount() // Add this for the notification
+            'new_bookings_count' => $bookingModel->getNewBookingsCount(),
+            'packages' => $packageModel->findAll() // For the demo display
         ];
 
         return view('admin/dashboard', $data);
@@ -28,10 +29,9 @@ class AdminController extends BaseController
         $bookingModel = new BookingModel();
         $packageModel = new PackageModel();
 
-        // Get filter and sort data from URL
         $filters = [
-            'start_date' => $this->request->getGet('filter_start_date'), // Updated
-            'end_date'   => $this->request->getGet('filter_end_date'),   // Updated
+            'start_date' => $this->request->getGet('filter_start_date'),
+            'end_date'   => $this->request->getGet('filter_end_date'),
             'package_id' => $this->request->getGet('filter_package'),
             'destination' => $this->request->getGet('filter_destination')
         ];
@@ -160,5 +160,25 @@ class AdminController extends BaseController
 
         $settingModel->update($setting['id'], $data);
         return redirect()->to('/admin/settings')->with('success', 'Settings updated successfully.');
+    }
+    // --- User Management ---
+    public function users()
+    {
+        $userModel = new UserModel();
+        $data['users'] = $userModel->getUsersWithBookings();
+        return view('admin/users/index', $data);
+    }
+    public function previewPackage($id)
+    {
+        $packageModel = new PackageModel();
+        $data['package'] = $packageModel->find($id);
+
+        if (empty($data['package'])) {
+            return redirect()->to('/admin/dashboard')->with('error', 'Package not found.');
+        }
+
+        $data['images'] = !empty($data['package']['image_urls']) ? explode(',', $data['package']['image_urls']) : [];
+
+        return view('admin/packages/preview', $data);
     }
 }

@@ -40,3 +40,9 @@
     height: 200px;
     object-fit: cover;
 }
+/* Search Bar Styling */
+.search-bar {
+    margin-top: -50px; /* Pulls the bar up over the hero image */
+    position: relative;
+    z-index: 10;
+}

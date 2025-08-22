@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-t">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,6 +19,7 @@
                     <li class="nav-item"><a class="nav-link" href="/admin/dashboard">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/packages">Manage Packages</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/bookings">Bookings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/users">Manage Users</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/settings">Settings</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -38,7 +39,7 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <?= $this->renderSection('scripts') ?>
-    
 </body>
 </html>

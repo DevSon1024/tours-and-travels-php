@@ -1,8 +1,8 @@
-<?= $this->extend('layouts/main') ?>
+<?= $this->extend('layouts/admin_layout') ?>
 <?= $this->section('content') ?>
 <div class="container package-details mt-5">
 
-    <div class="row align-items-center">
+    <div class="row">
         <div class="col-lg-8">
             <h1 class="display-5 fw-bold"><?= esc($package['title']) ?></h1>
             <p class="lead text-muted"><?= esc($package['destination']) ?> | <?= esc($package['category']) ?></p>
@@ -25,11 +25,9 @@
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#packageCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#packageCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
         </button>
     </div>
     <?php endif; ?>
@@ -48,20 +46,12 @@
         </div>
         <div class="col-lg-4">
             <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Book This Tour</h4>
-                    <?php if (session()->get('isLoggedIn')): ?>
-                        <p>You are logged in as <?= session()->get('name') ?>.</p>
-                        <div class="d-grid">
-                            <a href="/booking/book/<?= $package['id'] ?>" class="btn btn-success btn-lg">Proceed to Book</a>
-                        </div>
-                    <?php else: ?>
-                        <p>You need to be logged in to book a tour.</p>
-                        <div class="d-grid gap-2">
-                            <a href="/login" class="btn btn-primary">Login</a>
-                            <a href="/register" class="btn btn-secondary">Register</a>
-                        </div>
-                    <?php endif; ?>
+                <div class="card-body text-center">
+                    <h4 class="card-title">Admin Action</h4>
+                    <p>This is a preview of the user-facing page.</p>
+                    <div class="d-grid gap-2">
+                        <a href="/admin/dashboard" class="btn btn-secondary">Return to Dashboard</a>
+                    </div>
                 </div>
             </div>
         </div>

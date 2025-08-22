@@ -9,12 +9,12 @@
             <div class="row">
                 <div class="col-md-3">
                     <label>From Date</label>
-                        <input type="date" name="filter_start_date"  class="form-control" value="<?= esc($filters['start_date']) ?>">
-                    </div>
-                    <div class="col-md-3">
-                        <label>To Date</label>
-                        <input type="date" name="filter_end_date" class="form-control" value="<?= esc($filters['end_date']) ?>">
-                    </div>
+                    <input type="date" name="filter_start_date" class="form-control" value="<?= esc($filters['start_date']) ?>">
+                </div>
+                <div class="col-md-3">
+                    <label>To Date</label>
+                    <input type="date" name="filter_end_date" class="form-control" value="<?= esc($filters['end_date']) ?>">
+                </div>
                 <div class="col-md-3">
                     <label>By Package</label>
                     <select name="filter_package" class="form-select">
@@ -25,10 +25,6 @@
                             </option>
                         <?php endforeach; ?>
                     </select>
-                </div>
-                <div class="col-md-3">
-                    <label>By Destination</label>
-                    <input type="text" name="filter_destination" class="form-control" value="<?= esc($filters['destination']) ?>" placeholder="Enter destination">
                 </div>
                 <div class="col-md-3 d-flex align-items-end">
                     <button type="submit" class="btn btn-primary me-2">Apply</button>
@@ -45,9 +41,9 @@
             <th>Booking ID</th>
             <th>Customer Name</th>
             <th>Package</th>
-            <th><a href="?sort_by=total_price&sort_order=<?= $sorting['sortOrder'] === 'ASC' ? 'DESC' : 'ASC' ?>">Total Price</a></th>
+            <th><a href="?sort_by=total_price&sort_order=<?= ($sorting['sortBy'] == 'total_price' && $sorting['sortOrder'] === 'ASC') ? 'DESC' : 'ASC' ?>">Total Price</a></th>
             <th>Status</th>
-            <th><a href="?sort_by=tour_date&sort_order=<?= $sorting['sortOrder'] === 'ASC' ? 'DESC' : 'ASC' ?>">Booking Date</a></th>
+            <th><a href="?sort_by=tour_date&sort_order=<?= ($sorting['sortBy'] == 'tour_date' && $sorting['sortOrder'] === 'ASC') ? 'DESC' : 'ASC' ?>">Tour Date</a></th>
             <th>Action</th>
         </tr>
     </thead>

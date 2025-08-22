@@ -47,6 +47,9 @@ $routes->group('admin', ['filter' => ['auth', 'admin']], function($routes) {
     $routes->get('bookings', 'AdminController::bookings');
     $routes->get('bookings/details/(:num)', 'AdminController::bookingDetails/$1');
 
+    $routes->get('users', 'AdminController::users');
+    $routes->get('packages/preview/(:num)', 'AdminController::previewPackage/$1');
+
     // Settings
     $routes->get('settings', 'AdminController::settings');
     $routes->post('settings/update', 'AdminController::updateSettings');

@@ -36,7 +36,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Set min and max dates for the date picker
         const datePicker = document.getElementById('tour_date');
         const today = new Date().toISOString().split('T')[0];
 
@@ -48,7 +47,6 @@
             datePicker.max = packageEndDate;
         }
 
-        // Update price on person change
         document.getElementById('num_persons').addEventListener('input', function() {
             let persons = this.value;
             let pricePerPerson = <?= $package['price_per_person'] ?>;

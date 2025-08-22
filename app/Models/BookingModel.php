@@ -7,7 +7,7 @@ class BookingModel extends Model
     protected $table = 'bookings';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'user_id', 'package_id', 'num_persons', 'contact_phone',
+        'user_id', 'package_id', 'tour_date', 'num_persons', 'contact_phone',
         'health_discomforts', 'total_price', 'status'
     ];
 
@@ -19,7 +19,7 @@ class BookingModel extends Model
                     ->findAll();
     }
 
-   public function getNewBookingsCount()
+    public function getNewBookingsCount()
     {
         return $this->where('DATE(created_at)', date('Y-m-d'))->countAllResults();
     }
@@ -30,12 +30,11 @@ class BookingModel extends Model
                         ->join('users', 'users.id = bookings.user_id')
                         ->join('packages', 'packages.id = bookings.package_id');
 
-        // --- DATE RANGE FILTER (UPDATED) ---
+        // Date Range Filter
         if (!empty($filters['start_date']) && !empty($filters['end_date'])) {
             $builder->where('bookings.tour_date >=', $filters['start_date']);
             $builder->where('bookings.tour_date <=', $filters['end_date']);
         }
-        // --- END OF UPDATE ---
 
         if (!empty($filters['package_id'])) {
             $builder->where('bookings.package_id', $filters['package_id']);

@@ -8,9 +8,19 @@ class HomeController extends BaseController
     public function index()
     {
         $packageModel = new PackageModel();
-        $settingModel = new SettingModel(); // Add this
+        $settingModel = new SettingModel();
+
+        $filters = [
+            'destination' => $this->request->getGet('destination'),
+            'start_date'  => $this->request->getGet('start_date'),
+            'end_date'    => $this->request->getGet('end_date'),
+            'max_price'   => $this->request->getGet('max_price')
+        ];
 
         $data['packages'] = $packageModel->where('status', 'Active')->findAll();
+        $data ['filters'] = $filters; // Send filters back to the view
+
+
         $background = $settingModel->where('setting_key', 'landing_page_background')->first();
         $data['background_url'] = $background ? $background['setting_value'] : 'https://i.ibb.co/LD7gXmCm/anders-jilden-c-Yr-MQA7a3-Wc-unsplash.jpg';
 

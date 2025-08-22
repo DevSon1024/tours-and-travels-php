@@ -39,6 +39,17 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
+                     <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-control" name="start_date">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">End Date</label>
+                            <input type="date" class="form-control" name="end_date">
+                        </div>
+                    </div>
+
                     <div class="mb-3">
                         <label class="form-label">Destination</label>
                         <input type="text" class="form-control" name="destination">

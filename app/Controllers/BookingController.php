@@ -19,7 +19,7 @@ class BookingController extends BaseController
         $data = [
             'user_id'            => session()->get('user_id'),
             'package_id'         => $this->request->getPost('package_id'),
-            'tour_date'          => $this->request->getPost('tour_date'), // Add this line
+            'tour_date'          => $this->request->getPost('tour_date'),
             'num_persons'        => $this->request->getPost('num_persons'),
             'contact_phone'      => $this->request->getPost('contact_phone'),
             'health_discomforts' => $this->request->getPost('health_discomforts'),
