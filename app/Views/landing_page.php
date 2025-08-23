@@ -15,6 +15,10 @@
 <div class="search-bar container bg-light p-4 rounded shadow-sm">
     <form action="/" method="get">
         <div class="row g-3 align-items-end">
+            <div class="col-lg-4 col-md-6">
+                <label for="search" class="form-label">Search (Destination, Title, Tags)</label>
+                <input type="text" class="form-control" name="search" placeholder="e.g., Goa, Honeymoon, Trekking" value="<?= esc($filters['search']) ?>">
+            </div>
             <div class="col-lg-3 col-md-6">
                 <label for="destination" class="form-label">Destination</label>
                 <input type="text" class="form-control" name="destination" placeholder="e.g., Goa, Manali" value="<?= esc($filters['destination']) ?>">

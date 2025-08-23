@@ -96,6 +96,7 @@ class AdminController extends BaseController
             'start_date'        => $this->request->getPost('start_date'),
             'end_date'          => $this->request->getPost('end_date'),
             'status'            => $this->request->getPost('status'),
+            'tags'              => $this->request->getPost('tags'),
         ];
 
         $packageModel->save($data);
@@ -130,6 +131,7 @@ class AdminController extends BaseController
             'start_date'        => $this->request->getPost('start_date'),
             'end_date'          => $this->request->getPost('end_date'),
             'status'            => $this->request->getPost('status'),
+            'tags'              => $this->request->getPost('tags'),
         ];
         $packageModel->update($id, $data);
         return redirect()->to('/admin/packages')->with('success', 'Package updated successfully.');

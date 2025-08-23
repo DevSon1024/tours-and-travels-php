@@ -11,18 +11,16 @@ class HomeController extends BaseController
         $settingModel = new SettingModel();
 
         $filters = [
-            'destination' => $this->request->getGet('destination'),
+            'search'      => $this->request->getGet('search'), // Changed from 'destination'
             'start_date'  => $this->request->getGet('start_date'),
-            'end_date'    => $this->request->getGet('end_date'),
             'max_price'   => $this->request->getGet('max_price')
         ];
 
-        $data['packages'] = $packageModel->where('status', 'Active')->findAll();
-        $data ['filters'] = $filters; // Send filters back to the view
-
+        $data['packages'] = $packageModel->getFilteredPackages($filters);
+        $data['filters'] = $filters;
 
         $background = $settingModel->where('setting_key', 'landing_page_background')->first();
-        $data['background_url'] = $background ? $background['setting_value'] : 'https://i.ibb.co/LD7gXmCm/anders-jilden-c-Yr-MQA7a3-Wc-unsplash.jpg';
+        $data['background_url'] = $background ? $background['setting_value'] : 'https://placehold.co/1920x1080/EBF4FF/333333?text=Explore+the+World';
 
         return view('landing_page', $data);
     }

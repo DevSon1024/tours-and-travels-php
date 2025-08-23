@@ -153,3 +153,8 @@
 .package-details .nav-tabs .nav-link.active {
     font-weight: bold;
 }
+
+.tags-section .badge {
+    font-size: 0.9rem;
+    padding: 0.5em 0.8em;
+}

@@ -22,3 +22,20 @@ function nl2ul(string $string): string
     $html .= '</ul>';
     return $html;
 }
+
+/**
+ * Converts a comma-separated string of tags into styled HTML badges.
+ */
+function display_tags(string $tags_string = null): string
+{
+    if (empty($tags_string)) {
+        return '';
+    }
+    $tags = explode(',', $tags_string);
+    $html = '<div class="tags-section">';
+    foreach ($tags as $tag) {
+        $html .= '<span class="badge bg-info me-1"><i class="bi bi-tag-fill"></i> ' . esc(trim($tag)) . '</span>';
+    }
+    $html .= '</div>';
+    return $html;
+}

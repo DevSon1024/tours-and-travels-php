@@ -93,5 +93,17 @@
             </div>
         </div>
     </div>
+    <div class="container package-details-content mt-5">
+        <div class="row mt-4">
+            <div class="col-lg-8">
+                <div class="card content-card mt-4">
+                    <div class="card-body">
+                    <h4><i class="bi bi-tags-fill"></i> Tags</h4>
+                    <?= display_tags($package['tags']) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <?= $this->endSection() ?>

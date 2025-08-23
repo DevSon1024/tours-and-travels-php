@@ -5,6 +5,10 @@
     <?= csrf_field() ?>
     <div class="row">
         <div class="col-md-8">
+            <div class="mb-3">
+                <label class="form-label">Tags (comma-separated)</label>
+                <input type="text" class="form-control" name="tags" placeholder="e.g., Adventure, Hiking, Couple Friendly">
+            </div>
             <div class="card">
                 <div class="card-body">
                     <div class="mb-3">
