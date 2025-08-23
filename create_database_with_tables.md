@@ -101,3 +101,7 @@ INSERT INTO `users` (`name`, `email`, `password`, `role`) VALUES
 -- Insert a default setting for the landing page background
 INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES
 ('landing_page_background', 'https://placehold.co/1920x1080/EBF4FF/333333?text=Explore+the+World');
+
+
+ALTER TABLE `packages`
+ADD `tags` VARCHAR(255) NULL DEFAULT NULL AFTER `category`;

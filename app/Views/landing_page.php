@@ -17,23 +17,23 @@
         <div class="row g-3 align-items-end">
             <div class="col-lg-4 col-md-6">
                 <label for="search" class="form-label">Search (Destination, Title, Tags)</label>
-                <input type="text" class="form-control" name="search" placeholder="e.g., Goa, Honeymoon, Trekking" value="<?= esc($filters['search']) ?>">
+                <input type="text" class="form-control" name="search" placeholder="e.g., Goa, Honeymoon, Trekking" value="<?= esc($filters['search'] ?? '') ?>">
             </div>
-            <div class="col-lg-3 col-md-6">
+            <!-- <div class="col-lg-3 col-md-6">
                 <label for="destination" class="form-label">Destination</label>
-                <input type="text" class="form-control" name="destination" placeholder="e.g., Goa, Manali" value="<?= esc($filters['destination']) ?>">
-            </div>
+                <input type="text" class="form-control" name="destination" placeholder="e.g., Goa, Manali" value="<?= esc($filters['destination'] ?? '') ?>">
+            </div> -->
             <div class="col-lg-3 col-md-6">
                 <label for="start_date" class="form-label">Available From</label>
-                <input type="date" class="form-control" name="start_date" value="<?= esc($filters['start_date']) ?>">
+                <input type="date" class="form-control" name="start_date" value="<?= esc($filters['start_date'] ?? '') ?>">
             </div>
              <div class="col-lg-3 col-md-6">
                 <label for="end_date" class="form-label">Available To</label>
-                <input type="date" class="form-control" name="end_date" value="<?= esc($filters['end_date']) ?>">
+                <input type="date" class="form-control" name="end_date" value="<?= esc($filters['end_date'] ?? '') ?>">
             </div>
             <div class="col-lg-2 col-md-6">
                 <label for="max_price" class="form-label">Max Price (₹)</label>
-                <input type="number" class="form-control" name="max_price" placeholder="e.g., 50000" value="<?= esc($filters['max_price']) ?>">
+                <input type="number" class="form-control" name="max_price" placeholder="e.g., 50000" value="<?= esc($filters['max_price'] ?? '') ?>">
             </div>
             <div class="col-lg-1 col-md-12 d-grid">
                 <button type="submit" class="btn btn-primary">Search</button>

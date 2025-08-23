@@ -27,10 +27,20 @@ class PackageModel extends Model
             $builder->groupEnd();
         }
 
-        if (!empty($filters['start_date'])) {
+        if (!empty($filters['destination'])) {
+            $builder->like('destination', $filters['destination']);
+        }
+
+        if (!empty($filters['start_date']) && !empty($filters['end_date'])) {
+            $builder->groupStart();
+            $builder->where('start_date <=', $filters['end_date']);
+            $builder->where('end_date >=', $filters['start_date']);
+            $builder->groupEnd();
+        } elseif (!empty($filters['start_date'])) {
             $builder->where('start_date <=', $filters['start_date']);
             $builder->where('end_date >=', $filters['start_date']);
         }
+
 
         if (!empty($filters['max_price'])) {
             $builder->where('price_per_person <=', $filters['max_price']);

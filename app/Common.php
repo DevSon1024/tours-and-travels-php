@@ -2,13 +2,9 @@
 
 /**
  * Converts a string with newlines into an HTML unordered list.
- *
- * @param string $string The input string.
- * @return string The formatted HTML list.
  */
 function nl2ul(string $string): string
 {
-    // Split the string by new lines, removing empty lines
     $items = array_filter(explode("\n", trim($string)));
     if (empty($items)) {
         return '<p>Not specified.</p>';
@@ -16,7 +12,6 @@ function nl2ul(string $string): string
 
     $html = '<ul class="icon-list">';
     foreach ($items as $item) {
-        // Trim each item to remove extra whitespace
         $html .= '<li><i class="bi bi-check-circle-fill"></i>' . esc(trim($item)) . '</li>';
     }
     $html .= '</ul>';
@@ -25,8 +20,9 @@ function nl2ul(string $string): string
 
 /**
  * Converts a comma-separated string of tags into styled HTML badges.
+ * FIX: Changed 'string $tags_string = null' to '?string $tags_string' to make it explicitly nullable.
  */
-function display_tags(string $tags_string = null): string
+function display_tags(?string $tags_string = null): string
 {
     if (empty($tags_string)) {
         return '';

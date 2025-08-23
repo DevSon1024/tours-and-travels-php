@@ -11,8 +11,10 @@ class HomeController extends BaseController
         $settingModel = new SettingModel();
 
         $filters = [
-            'search'      => $this->request->getGet('search'), // Changed from 'destination'
+            'search'      => $this->request->getGet('search'),
+            'destination' => $this->request->getGet('destination'), // Added this line
             'start_date'  => $this->request->getGet('start_date'),
+            'end_date'    => $this->request->getGet('end_date'), // Added this line
             'max_price'   => $this->request->getGet('max_price')
         ];
 
