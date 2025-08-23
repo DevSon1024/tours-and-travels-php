@@ -1,15 +1,21 @@
 <?php
 
 /**
- * The goal of this file is to allow developers a location
- * where they can overwrite core procedural functions and
- * replace them with their own. This file is loaded during
- * the bootstrap process and is called during the framework's
- * execution.
+ * Converts a string with newlines into an HTML unordered list.
  *
- * This can be looked at as a `master helper` file that is
- * loaded early on, and may also contain additional functions
- * that you'd like to use throughout your entire application
- *
- * @see: https://codeigniter.com/user_guide/extending/common.html
+ * @param string $string The input string.
+ * @return string The formatted HTML list.
  */
+function nl2ul(string $string): string
+{
+    $items = array_filter(explode("\n", trim($string)));
+    if (empty($items)) {
+        return '';
+    }
+    $html = '<ul>';
+    foreach ($items as $item) {
+        $html .= '<li>' . esc(trim($item)) . '</li>';
+    }
+    $html .= '</ul>';
+    return $html;
+}
