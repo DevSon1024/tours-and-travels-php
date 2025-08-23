@@ -39,11 +39,17 @@
         <?php foreach($packages as $package): ?>
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                 <?php 
-                    $images = !empty($package['image_urls']) ? explode(',', $package['image_urls']) : [];
-                    $first_image = trim($images[0] ?? 'https://placehold.co/600x400/CCCCCC/FFFFFF?text=Tour');
-                ?>
-                <img src="<?= esc($first_image) ?>" class="card-img-top" alt="<?= esc($package['title']) ?>">
+                <div class="position-relative">
+                    <?php
+                        $images = !empty($package['image_urls']) ? explode(',', $package['image_urls']) : [];
+                        $first_image = trim($images[0] ?? 'https://placehold.co/600x400/CCCCCC/FFFFFF?text=Tour');
+                    ?>
+                    <img src="<?= esc($first_image) ?>" class="card-img-top" alt="<?= esc($package['title']) ?>">
+
+                    <span class="badge bg-<?= $package['status'] == 'Active' ? 'success' : 'secondary' ?> position-absolute top-0 end-0 m-2">
+                        <?= esc($package['status']) ?>
+                    </span>
+                </div>
                 <div class="card-body">
                     <h5 class="card-title"><?= esc($package['title']) ?></h5>
                     <p class="card-text text-muted"><small><?= esc($package['duration']) ?></small></p>

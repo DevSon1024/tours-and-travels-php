@@ -8,13 +8,16 @@
  */
 function nl2ul(string $string): string
 {
+    // Split the string by new lines, removing empty lines
     $items = array_filter(explode("\n", trim($string)));
     if (empty($items)) {
-        return '';
+        return '<p>Not specified.</p>';
     }
-    $html = '<ul>';
+
+    $html = '<ul class="icon-list">';
     foreach ($items as $item) {
-        $html .= '<li>' . esc(trim($item)) . '</li>';
+        // Trim each item to remove extra whitespace
+        $html .= '<li><i class="bi bi-check-circle-fill"></i>' . esc(trim($item)) . '</li>';
     }
     $html .= '</ul>';
     return $html;

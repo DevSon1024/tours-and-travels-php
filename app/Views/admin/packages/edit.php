@@ -63,7 +63,7 @@
                         <input type="text" class="form-control" name="category" value="<?= esc($package['category']) ?>" placeholder="e.g., Honeymoon, Adventure">
                     </div>
                      <div class="mb-3">
-                        <label class="form-label">Price per Person ($)</label>
+                        <label class="form-label">Price per Person (₹)</label>
                         <input type="number" step="0.01" class="form-control" name="price_per_person" value="<?= esc($package['price_per_person']) ?>" required>
                     </div>
                     <div class="mb-3">
